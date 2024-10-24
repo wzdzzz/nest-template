@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int     @id @default(autoincrement())
+  email      String  @unique
+  username   String
+  password   String
+  is_deleted Boolean @default(false)
+
+  @@map("user")
+}
+
+model Author {
+  id          Int       @id @unique @default(autoincrement())
+  name        String
+  age         Int
+  is_deleted  Boolean   @default(false)
+  nationality String?
+  birthday    DateTime?
+  Bool        Book[]
+
+  @@map("author")
+}
+
+model Book {
+  id         String  @id @unique @default(uuid())
+  title      String  @default("")
+  authorId   Int     @default(-1)
+  price      Int     @default(0)
+  is_deleted Boolean @default(false)
+  author     Author  @relation(fields: [authorId], references: [id])
+  Movie      Movie[]
+
+  @@map("books")
+}
+
+model Movie {
+  id         String  @id @unique @default(uuid())
+  title      String
+  originalId String  @default("")
+  original   Book    @relation(fields: [originalId], references: [id])
+  is_deleted Boolean @default(false)
+}
