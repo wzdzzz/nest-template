@@ -18,12 +18,12 @@ model User {
 }
 
 model Author {
-  id          Int       @id @unique @default(autoincrement())
+  id          Int     @id @unique @default(autoincrement())
   name        String
   age         Int
-  is_deleted  Boolean   @default(false)
+  is_deleted  Boolean @default(false)
   nationality String?
-  birthday    DateTime?
+  birthday    String?
   Bool        Book[]
 
   @@map("author")

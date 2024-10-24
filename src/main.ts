@@ -18,6 +18,8 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
 
+  app.setGlobalPrefix('/api');
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
   app.use(express.json()); // For parsing application/json
@@ -35,10 +37,13 @@ async function bootstrap() {
     maxAge: 3600,
   });
   app.use(helmet());
+  app.enableVersioning();
+
+  app.enableShutdownHooks();
 
   app.useGlobalInterceptors(new AllResponseInterceptor());
   app.useGlobalFilters(new AnyExceptionFilter());
   await app.listen(3000);
 }
 
-bootstrap();
+void bootstrap();

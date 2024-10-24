@@ -14,10 +14,12 @@ const log4jsConfig = {
       filename: `${baseLogPath}/access/access.log`, // 日志文件名，会命名为：access.20200320.log
       alwaysIncludePattern: true,
       pattern: 'yyyyMMdd',
-      daysToKeep: 60,
+      daysToKeep: 30,
+      maxLogSize: 1024 * 1024 * 20,
       numBackups: 3,
       category: 'http',
       keepFileExt: true, // 是否保留文件后缀
+      compression: true,
     },
     app: {
       type: 'dateFile',
@@ -30,10 +32,11 @@ const log4jsConfig = {
       },
       // 日志文件按日期（天）切割
       pattern: 'yyyyMMdd',
-      daysToKeep: 60,
-      // maxLogSize: 10485760,
+      daysToKeep: 30,
+      maxLogSize: 1024 * 1024 * 20,
       numBackups: 3,
       keepFileExt: true,
+      compression: true,
     },
     errorFile: {
       type: 'dateFile',
@@ -46,10 +49,11 @@ const log4jsConfig = {
       },
       // 日志文件按日期（天）切割
       pattern: 'yyyyMMdd',
-      daysToKeep: 60,
-      // maxLogSize: 10485760,
+      daysToKeep: 30,
+      maxLogSize: 1024 * 1024 * 20,
       numBackups: 3,
       keepFileExt: true,
+      compression: true,
     },
     errors: {
       type: 'logLevelFilter',

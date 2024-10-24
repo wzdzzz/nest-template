@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Version,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Public } from '../auth/jwt-auth.guard';
 
 @ApiTags('书籍')
 @Controller('books')
@@ -23,9 +25,18 @@ export class BooksController {
     return this.booksService.create(createBookDto);
   }
 
+  @Public()
   @Get()
   @ApiOperation({ summary: '获取所有书籍' })
   findAll() {
+    return this.booksService.findAll();
+  }
+
+  @Public()
+  @Get()
+  @Version('1')
+  @ApiOperation({ summary: '获取所有书籍' })
+  findAllV1() {
     return this.booksService.findAll();
   }
 
