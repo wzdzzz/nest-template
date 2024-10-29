@@ -13,7 +13,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('接口文档')
-    .setDescription('这个接口文档我是自动生成的')
+    .setDescription('项目接口文档')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
