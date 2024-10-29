@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
-import { RegisterDto } from '../auth/dto/register.dto';
-import { aes_encrypt } from '../utils/aes-secret';
+import { PrismaService } from '@/prisma/prisma.service';
+import { RegisterDto } from '@/auth/dto/register.dto';
+import { aes_encrypt } from '@/utils/aes-secret';
 import { UserResponse } from './user.response';
 
 @Injectable()

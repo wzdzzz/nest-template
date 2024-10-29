@@ -14,7 +14,7 @@ import { JwtGuard, Public } from './jwt-auth.guard';
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
-import { UserResponse } from '../users/user.response';
+import { UserResponse } from '@/users/user.response';
 
 @ApiTags('权限管理')
 @Controller('auth')

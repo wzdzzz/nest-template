@@ -1,4 +1,3 @@
-// src/utils/log4js.ts
 import * as Path from 'path';
 import * as Log4js from 'log4js';
 import * as Util from 'util';

@@ -11,6 +11,7 @@
 - **Prisma**: 集成了Prisma ORM，简化了数据库的管理和操作，支持多种数据库（如PostgreSQL、MySQL等）。
 - **Crypto**: 集成了加密库，用于数据加密和安全处理。
 - **Log4js**: 集成了Log4js日志库，用于日志记录和管理。
+- **Redis**: 集成了Redis缓存库，用于数据缓存和持久化。
 
 
 ## 安装

@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '@/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dto/register.dto';
-import { aes_encrypt } from '../utils/aes-secret';
-import { UserResponse } from '../users/user.response';
-import { RedisService } from '../db/redis/redis.service';
+import { aes_encrypt } from '@/utils/aes-secret';
+import { UserResponse } from '@/users/user.response';
+import { RedisService } from '@/db/redis/redis.service';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

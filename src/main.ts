@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from '@/app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { AllResponseInterceptor } from './interceptor/all-response.interceptor';
-import { AnyExceptionFilter } from './filters/any-exception.filter';
-import { logger } from './middleware/logger.middleware';
+import { AllResponseInterceptor } from '@/interceptor/all-response.interceptor';
+import { AnyExceptionFilter } from '@/filters/any-exception.filter';
+import { logger } from '@/middleware/logger.middleware';
 import helmet from 'helmet';
 import * as express from 'express';
-import { ValidationPipe } from './pipe/validation.pipe';
+import { ValidationPipe } from '@/pipe/validation.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,15 +22,15 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
-  app.use(express.json()); // For parsing application/json
-  app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-  // 监听所有的请求路由，并打印日志
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
   app.use(logger);
   app.useGlobalPipes(new ValidationPipe());
 
   app.enableCors({
     origin: true,
-    methods: 'GET,PUT,POST',
+    methods: 'GET,PUT,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     exposedHeaders: 'Content-Range,X-Content-Range',
     credentials: true,
