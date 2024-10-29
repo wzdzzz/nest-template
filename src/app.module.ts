@@ -11,7 +11,14 @@ import { MockModule } from './mock/mock.module';
 import { RedisModule } from './db/redis/redis.module';
 
 @Module({
-  imports: [BooksModule, AuthorModule, UsersModule, AuthModule, MockModule, RedisModule],
+  imports: [
+    BooksModule,
+    AuthorModule,
+    UsersModule,
+    AuthModule,
+    MockModule,
+    RedisModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
