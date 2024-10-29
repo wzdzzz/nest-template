@@ -19,7 +19,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   async validate(username: string, password: string): Promise<UserResponse> {
     const user = await this.authService.validateUser(username, password);
     if (!user) {
-      throw new HttpException('用户名或者密码错误！', HttpStatus.UNAUTHORIZED);
+      throw new HttpException('用户名或者密码错误', HttpStatus.UNAUTHORIZED);
     }
     return user;
   }

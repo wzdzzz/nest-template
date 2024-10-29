@@ -35,18 +35,18 @@ export class AuthorController {
   @Get(':id')
   @ApiOperation({ summary: '根据ID获取作者' })
   findOne(@Param('id') id: string) {
-    return this.authorService.findOne(+id);
+    return this.authorService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOperation({ summary: '更新作者' })
   update(@Param('id') id: string, @Body() updateAuthorDto: UpdateAuthorDto) {
-    return this.authorService.update(+id, updateAuthorDto);
+    return this.authorService.update(id, updateAuthorDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: '删除作者' })
   remove(@Param('id') id: string) {
-    return this.authorService.remove(+id);
+    return this.authorService.remove(id);
   }
 }

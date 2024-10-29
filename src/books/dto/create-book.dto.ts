@@ -14,5 +14,5 @@ export class CreateBookDto {
   @ApiProperty({
     description: '作者id',
   })
-  authorId: number;
+  authorId: string;
 }

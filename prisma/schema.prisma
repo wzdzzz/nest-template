@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id         Int     @id @default(autoincrement())
+  id         String  @id @unique @default(uuid())
   email      String  @unique
   username   String
   password   String
@@ -18,7 +18,7 @@ model User {
 }
 
 model Author {
-  id          Int     @id @unique @default(autoincrement())
+  id          String  @id @unique @default(uuid())
   name        String
   age         Int
   is_deleted  Boolean @default(false)
@@ -32,7 +32,7 @@ model Author {
 model Book {
   id         String  @id @unique @default(uuid())
   title      String  @default("")
-  authorId   Int     @default(-1)
+  authorId   String  @default("")
   price      Int     @default(0)
   is_deleted Boolean @default(false)
   author     Author  @relation(fields: [authorId], references: [id])

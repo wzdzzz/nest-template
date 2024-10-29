@@ -1,6 +1,12 @@
 import { AuthGuard } from '@nestjs/passport';
 import { Reflector } from '@nestjs/core';
-import { ExecutionContext, Injectable, SetMetadata } from '@nestjs/common';
+import {
+  ExecutionContext,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  SetMetadata,
+} from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -18,6 +24,13 @@ export class JwtGuard extends AuthGuard('jwt') {
     ]);
 
     if (isPublic) return true;
+
+    const req = context.switchToHttp().getRequest();
+    const access_token = req.get('Authorization')?.split(' ')[1];
+
+    if (!access_token) {
+      throw new HttpException('请先登录', HttpStatus.FORBIDDEN);
+    }
 
     return super.canActivate(context);
   }

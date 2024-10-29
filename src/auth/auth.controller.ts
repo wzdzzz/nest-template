@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Request } from 'express';
 import { LocalAuthGuard } from './local-auth.guard';
@@ -35,5 +43,12 @@ export class AuthController {
   @ApiBody({ type: RegisterDto, description: '输入用户名和密码' })
   async register(@Body() registerDto: RegisterDto) {
     return await this.authService.register(registerDto);
+  }
+
+  @Delete('/logout')
+  @UseGuards(JwtGuard)
+  @ApiOperation({ summary: '退出登录' })
+  async logout(@Req() req: Request) {
+    return this.authService.logout(req.user as UserResponse);
   }
 }
