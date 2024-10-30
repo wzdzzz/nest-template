@@ -10,6 +10,8 @@ import { UsersModule } from '@/users/users.module';
 import { MockModule } from '@/mock/mock.module';
 import { RedisModule } from '@/db/redis/redis.module';
 import { PrismaModule } from '@/prisma/prisma.module';
+import { TaskModule } from '@/task/task.module';
+import { CronModule } from './cron/cron.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { PrismaModule } from '@/prisma/prisma.module';
     MockModule,
     RedisModule,
     PrismaModule,
+    TaskModule,
+    CronModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
