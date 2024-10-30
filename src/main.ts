@@ -11,6 +11,8 @@ import { ValidationPipe } from '@/pipe/validation.pipe';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('/api');
+
   const config = new DocumentBuilder()
     .setTitle('接口文档')
     .setDescription('项目接口文档')
@@ -18,10 +20,9 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
 
-  app.setGlobalPrefix('/api');
-
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
+
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 

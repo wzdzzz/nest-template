@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Logger } from '../utils/log4js';
+import { Logger } from '@/utils/log4js';
 
 // 函数式中间件
 export function logger(req: Request, res: Response, next: () => any) {

@@ -5,7 +5,7 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import { map, Observable } from 'rxjs';
-import { Logger } from '../utils/log4js';
+import { Logger } from '@/utils/log4js';
 
 @Injectable()
 export class AllResponseInterceptor implements NestInterceptor {
