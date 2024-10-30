@@ -9,6 +9,7 @@ import { AuthModule } from '@/auth/auth.module';
 import { UsersModule } from '@/users/users.module';
 import { MockModule } from '@/mock/mock.module';
 import { RedisModule } from '@/db/redis/redis.module';
+import { PrismaModule } from '@/prisma/prisma.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RedisModule } from '@/db/redis/redis.module';
     AuthModule,
     MockModule,
     RedisModule,
+    PrismaModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
