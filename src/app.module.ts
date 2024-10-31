@@ -12,6 +12,8 @@ import { RedisModule } from '@/db/redis/redis.module';
 import { PrismaModule } from '@/prisma/prisma.module';
 import { TaskModule } from '@/task/task.module';
 import { CronModule } from './cron/cron.module';
+import { QueueModule } from './queue/queue.module';
+import { AudioModule } from './audio/audio.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { CronModule } from './cron/cron.module';
     PrismaModule,
     TaskModule,
     CronModule,
+    QueueModule,
+    AudioModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
