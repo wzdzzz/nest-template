@@ -6,6 +6,10 @@ import { Cache } from 'cache-manager';
 export class RedisService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
+  async keys(key: string): Promise<string[]> {
+    return await (this.cacheManager.store as any)?.keys(key);
+  }
+
   async get<T>(key: string): Promise<T> {
     return await this.cacheManager.get(key);
   }
@@ -16,5 +20,9 @@ export class RedisService {
 
   async del(key: string): Promise<void> {
     return await this.cacheManager.del(key);
+  }
+
+  async lRange(key: string) {
+    return await (this.cacheManager.store as any).lRange(key, 0, 1);
   }
 }
