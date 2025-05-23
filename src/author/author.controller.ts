@@ -31,7 +31,7 @@ export class AuthorController {
   findAll() {
     return this.authorService.findAll();
   }
-
+  @Public()
   @Get(':id')
   @ApiOperation({ summary: '根据ID获取作者' })
   findOne(@Param('id') id: string) {

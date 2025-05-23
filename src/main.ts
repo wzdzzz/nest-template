@@ -26,6 +26,8 @@ async function bootstrap() {
   app.use(logger);
   app.useGlobalPipes(new ValidationPipe());
 
+  app.setGlobalPrefix('/api');
+
   app.enableCors({
     origin: true,
     methods: 'GET,PUT,POST',
@@ -38,7 +40,7 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(new AllResponseInterceptor());
   app.useGlobalFilters(new AnyExceptionFilter());
-  await app.listen(3000);
+  await app.listen(3001);
 }
 
 bootstrap();

@@ -8,9 +8,17 @@ import { ValidateLoginMiddleware } from './middleware/validate-login.middleware'
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { MockModule } from './mock/mock.module';
+import { RedisModule } from 'src/redis/redis.module';
 
 @Module({
-  imports: [BooksModule, AuthorModule, UsersModule, AuthModule, MockModule],
+  imports: [
+    BooksModule,
+    AuthorModule,
+    UsersModule,
+    AuthModule,
+    MockModule,
+    RedisModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
